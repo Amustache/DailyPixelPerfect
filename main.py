@@ -66,12 +66,15 @@ def lesgo(update: Update, context: CallbackContext) -> None:
         except ValueError:
             cur_total, cur_size, cur_num = 1, 1, 0
 
-        if cur_total != sum([2 ** (i ** 2) for i in range(1, cur_size)]) + cur_num + 1:
-            raise ValueError("Wrong total.")
+        try:
+            if int(cur_total) != sum([2 ** (i ** 2) for i in range(1, int(cur_size))]) + int(cur_num) + 1:
+                raise ValueError("Wrong total.")
+        except (TypeError, ValueError):
+            cur_total, cur_size, cur_num = 1, 1, 0
 
-        context.bot_data["cur_total"] = cur_total
-        context.bot_data["cur_size"] = cur_size
-        context.bot_data["cur_num"] = cur_num
+        context.bot_data["cur_total"] = int(cur_total)
+        context.bot_data["cur_size"] = int(cur_size)
+        context.bot_data["cur_num"] = int(cur_num)
         # context.job_queue.run_daily(gnr, datetime.now().time())
 
         next = datetime.now().replace(microsecond=0, second=0, minute=0) + timedelta(hours=1)
