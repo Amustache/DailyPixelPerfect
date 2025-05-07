@@ -1,0 +1,11 @@
+This bot generates pixels\.
+
+The idea is to have the size of a grid of pixels \(from 1 to 10\), and a number\. The number is broken down into binary bits, and each bit corresponds to a pixel \(1 for black, 0 for white\)\. Each number is mapped to a single image\.
+
+Usage:
+\- */start, /help*: Show this message\.
+\- */generate \<size\> \<number\>*: Generates an image of size \<size\> for the number \<number\>\.
+\- */random*: Generates a random image\.
+\- */channel\_start \<size\> \<number\>*: \(Admin only\) Allows you to start generating images every hour on the configured channel\.
+
+The code is available on GitHub\! https://github\.com/Amustache/DailyPixelPerfect
